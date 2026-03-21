@@ -1,0 +1,24 @@
+.model small	
+.stack 100h
+.data
+n1 db 8	;in division store quation and remainder
+n2 db 3
+n3 db 0	;empty value use of store remainder value
+.code
+start:
+mov ax,@data	
+mov ds,ax
+
+mov ah,00	;clear the ah register
+mov al,n1
+div n2	;n1/n2=8/2=4,n3=0
+mov n3,ah
+
+mov dl,al
+add dl,48	
+mov ah,02h	
+int 21h
+
+mov ax,4c00h
+int 21h
+end start
